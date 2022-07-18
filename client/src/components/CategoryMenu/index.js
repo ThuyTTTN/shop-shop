@@ -1,3 +1,5 @@
+//The CategoryMenu component keeps track of our category list from an Apollo query.
+
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORIES } from '../../utils/queries';

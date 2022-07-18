@@ -8,6 +8,9 @@ import {
     UPDATE_CURRENT_CATEGORY
 } from '../utils/actions';
 
+//import reducer function
+import { reducer } from '../utils/reducers';
+
 //create a sample of what our global state will look like
 const initialState = {
     products: [],
@@ -18,10 +21,33 @@ const initialState = {
   //write a test for updating products list from UPDATE_PRODUCTS.
   test('UPDATE_PRODUCTS', () => {
     let newState = reducer(initialState, {
-        type: UPDATE_PRODUCTS,
-        products: [{}, {}]
+      type: UPDATE_PRODUCTS,
+      products: [{}, {}]
     });
-
-    expect(newSate.products.length).toBe(2);
+  
+    expect(newState.products.length).toBe(2);
     expect(initialState.products.length).toBe(0);
+  });
+
+    //write a test for updating categories array list from UPDATE_CATEGORIES.
+  test('UPDATE_CATEGORIES', () => {
+    let newState = reducer(initialState, {
+      type: UPDATE_CATEGORIES,
+      categories: [{}, {}]
+    });
+  
+    expect(newState.categories.length).toBe(2);
+    expect(initialState.categories.length).toBe(1);
+  });
+
+  //write a test for updating the state of currentCategory to a new string value instead of an array
+  //When the test runs, compare these values between newState and initialState to confirm that initialState has remained the same.
+  test('UPDATE_CURRENT_CATEGORY', () => {
+    let newState = reducer(initialState, {
+      type: UPDATE_CURRENT_CATEGORY,
+      currentCategory: '2'
+    });
+  
+    expect(newState.currentCategory).toBe('2');
+    expect(initialState.currentCategory).toBe('1');
   });
